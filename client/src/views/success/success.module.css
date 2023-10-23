@@ -1,0 +1,20 @@
+.container {
+    text-align: center;
+    margin-top: 200px;
+  }
+  
+  .title {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  
+  .subtitle {
+    font-size: 1.5em;
+  }
+
+  .img{
+    position: relative;
+    margin-top: 0px;
+    height: 25%;
+    width: 25%;
+  }

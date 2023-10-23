@@ -1,0 +1,30 @@
+.contenedor {
+    width: 50%;
+    border-radius: 20px;
+    border: 1px solid #000000;
+    padding: 20px;
+    margin: 10px;
+    background-color: #00000087;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(30px); 
+  }
+  
+  .imagen {
+    margin-left: 23%;
+    max-width: 100px;
+    border-radius: 50%;
+  }
+  
+  .nombre {
+    text-align: center;
+    font-size: 1.2em;
+    margin: 10px 0;
+  }
+  
+  .detalle {
+    margin: 5px 0;
+  }
+  
+  .detalle b {
+    margin-right: 5px;
+  }

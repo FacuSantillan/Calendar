@@ -1,0 +1,101 @@
+.container {
+    margin: 140px auto 0 auto; /* Añadido margen superior de 50px */
+    max-width: 400px;
+    margin: 10 auto;
+    padding: 20px;
+    background-color: #00000082;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(30px); 
+  }
+  
+  .select-container {
+    margin-bottom: 20px;
+  }
+  .h1{
+    text-align: center;
+    font-size: 20px;
+  }
+  .select{
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    background-color: rgb(255, 255, 255);
+  } 
+
+  .button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    background-color: #29007a;
+  }
+  .button:hover{
+    background-color: #0c0025;
+  }
+
+  .button1:hover{
+    background-color: #0c0025;
+  }
+
+  .boton{
+    display: block;
+    width: 14%;
+    padding: 10px;
+    background-color: #29007a;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .ul .li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+  }
+  
+  .button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #29007a;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .button1{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #29007a;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .button:disabled {
+    background-color: #ccc; 
+    color: #666; 
+    cursor: not-allowed; 
+  }
