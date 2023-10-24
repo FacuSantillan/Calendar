@@ -5,8 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { guardarInformacion, getReservas } from "../../redux/actions";
 import { useEffect } from 'react';
 
-import Cards from '../../components/cards/cards'
-import style from './dashBoard.module.css'
+import Cards from '../../components/cards/cards';
+import style from './dashBoard.module.css';
 
 function DashBoard ({guardarInformacion}) {
     const dispatch = useDispatch();
@@ -22,7 +22,6 @@ function DashBoard ({guardarInformacion}) {
 
 const getAllReservas = () => {
     dispatch(getReservas())
-    console.log(allReservas)
 };
 
 const validation = () => {

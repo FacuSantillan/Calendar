@@ -4,7 +4,6 @@ import style from './card.module.css';
 export default function Card(props) {
     const { nombre, apellido, telefono, hora, fecha, servicio } = props;
 
-
     for (let i = 0; i < servicio.length; i++) {
         const e = servicio[i];
         var texto = JSON.parse(servicio)[0][0];
