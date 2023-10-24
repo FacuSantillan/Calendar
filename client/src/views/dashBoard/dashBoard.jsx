@@ -36,8 +36,8 @@ useEffect(() => {
 
     return(
         <div>
-            <h1>Turnos:</h1>
-            <Cards key={Cards} allReservas={allReservas}/>
+            <h1 className={style.title}>Reservas</h1>
+            <Cards className={style.card} key={Cards} allReservas={allReservas}/>
         </div>
     )
 };

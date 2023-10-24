@@ -1,4 +1,6 @@
 .contenedor {
+    position: relative;
+    left: 15%;
     width: 50%;
     border-radius: 20px;
     border: 1px solid #000000;

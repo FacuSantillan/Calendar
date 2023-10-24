@@ -71,17 +71,29 @@ const Services = ({guardarInformacion}) => {
       <div className={style.container}>
       <h1>Selecciona el servicio que desea</h1>
       <select value={clientData.turnos.servicios[i]} onChange={handleSelectChange} className={style.select}>
+
         <option value="defaultValue" selected>Peluqueria</option>
         <option value="Corte masculino">Corte masculino</option>
-        <option value="Corte Femenino">Corte Femenino</option>
-        <option value="Color">Color</option>
+        <option value="Corte Femenino">Corte femenino</option>
         <option value="Mechas">Mechas</option>
+        <option value="Iluminacion">Iluminacion</option>
+        <option value="Color L'Oréal">Color L'Oréal</option>
+        <option value="Color INOA">Color INOA</option>
+        <option value="Plancha">Plancha</option>
+        <option value="Brushing">Brushing</option>
+        <option value="Nutricion">Nutricion</option>
+        <option value="Nutricion L'Oréal">Brushing</option>
+        <option value="Diagnosticos">Diagnosticos</option>
+
       </select>
       <select value={clientData.turnos.servicios[i]} onChange={handleSelectChange} className={style.select}>
+
         <option value="defaultValue" selected>Uñas</option>
-        <option value="Permanentes">Permanentes</option>
-        <option value="Manicura completa">Manicura completa</option>
-        <option value="Pedicura completa">Pedicura completa</option>
+        <option value="soft gel">soft gel</option>
+        <option value="Kapping gel">Kapping gel</option>
+        <option value="Lifting de pestañas">Lifting de pestañas</option>
+        <option value="Belleza de pies">Belleza de pies</option>
+        
       </select>
       <button onClick={handleAddItem} className={style.button1}>Agregar</button>
 

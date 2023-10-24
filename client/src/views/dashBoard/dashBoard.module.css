@@ -1,3 +1,10 @@
-.list{
-    font-size: 14px;
+.title{
+    display: grid;
+    justify-content: center;
+    text-justify: center;
+    font-size: 25px;
+}
+.card{
+    position: absolute;
+    left: 5%;
 }
