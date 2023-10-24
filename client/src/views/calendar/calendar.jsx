@@ -23,9 +23,19 @@ function Calendario({guardarInformacion}) {
         turnos:{
             hora:"",
             fecha:"",
-            servicios:[informacion.turnos.servicios]
+            servicios:[]
         }
     });
+
+    const validation = () => {
+        if(clientData.turnos.servicios.length === 0 ){
+            navigate('/')
+        }
+    }
+
+    useEffect(() => {
+        validation()
+    },[])
 
     const [dateValue, setDateValue] = useState(new Date());
     const formatDate = (date) => {

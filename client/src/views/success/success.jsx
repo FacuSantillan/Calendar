@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
-import { guardarInformacion } from "../../redux/actions";
 
 import WhatsApp from '../../components/WhatsApp/Whats'
 import style from './success.module.css'
@@ -9,7 +7,6 @@ import check from '../../assets/check.png'
 
 export default function Success(){
     const informacion = useSelector(state => state.informacion);
-
     const navigate = useNavigate()
 
     const handleNewTurno = () => {
