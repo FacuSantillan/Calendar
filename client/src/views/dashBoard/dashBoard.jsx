@@ -26,7 +26,7 @@ const getAllReservas = () => {
 
 const validation = () => {
     if (clientData.nombre != 'admin' && clientData.apellido != 'admin' && clientData.telefono != '203320'){ 
-        navigate('/')
+        navigate('https://calendar-three-fawn.vercel.app/')
     } else{ getAllReservas() }
 };
 
