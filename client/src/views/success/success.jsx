@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { guardarInformacion } from "../../redux/actions";
 
+import WhatsApp from '../../components/WhatsApp/Whats'
 import style from './success.module.css'
 import check from '../../assets/check.png'
 
@@ -17,6 +18,11 @@ export default function Success(){
 
     return(
         <div className={style.container}>
+
+        <div className={style.component}>
+            <WhatsApp/>
+        </div>
+
             <h1 className={style.title}>Turno confirmado!</h1>
             <img className={style.img} src = {check} alt="Check" />
             <div className={style.text}>
