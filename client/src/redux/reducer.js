@@ -27,7 +27,7 @@
           case GET_RESERVAS:
           return {
             ...state,
-            reservas: action.payload
+            Reservas: action.payload
           };
           default:
             return state;

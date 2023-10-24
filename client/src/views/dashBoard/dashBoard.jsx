@@ -11,7 +11,7 @@ import style from './dashBoard.module.css';
 function DashBoard ({guardarInformacion}) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const allReservas = useSelector((state) => state.reservas);
+    const allReservas = useSelector((state) => state.Reservas);
     const informacion = useSelector(state => state.informacion);
 
     const [clientData, setClientData] = useState({

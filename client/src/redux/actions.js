@@ -28,7 +28,7 @@ export const guardarInformacion = (informacion) => {
 //------------------------Obtener todos los turnos---------------------------------//
 export const getReservas = () => {
     return async (dispatch) => {
-        const response = await axios.get(`/reservas`);
+        const response = await axios.get(`http://localhost:3001/reservas`);
         return dispatch({
             type: 'GET_RESERVAS',
             payload:response.data
