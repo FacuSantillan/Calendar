@@ -1,20 +1,35 @@
 .container {
-    text-align: center;
-    margin-top: 200px;
+  height: 63vh, auto;
+  max-height: 100%;
+  max-width: 400px;
+  margin: 150px auto 0 auto; 
+  padding: 30px;
+  background-color: #00000082;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(30px); 
+  align-items: center;
   }
   
+.text{
+  font-weight: lighter;
+  text-align: center;
+}
+
   .title {
+    text-align: center;
     font-size: 2em;
     margin-bottom: 10px;
   }
   
   .subtitle {
-    font-size: 1.5em;
+    font-weight: bold;
+    font-size: 1.6em;
   }
 
   .img{
-    position: relative;
+    margin-left: 35%;
     margin-top: 0px;
-    height: 25%;
-    width: 25%;
+    height: 35%;
+    width: 35%;
   }

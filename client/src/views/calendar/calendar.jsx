@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector, connect, useDispatch } from 'react-redux';
-import { guardarInformacion, getReservas } from "../../redux/actions"
+import { guardarInformacion } from "../../redux/actions"
 import { useNavigate } from 'react-router-dom';
 
 import Calendar from 'react-calendar';
@@ -27,7 +27,6 @@ function Calendario({guardarInformacion}) {
         }
     });
 
-    
     const [dateValue, setDateValue] = useState(new Date());
     const formatDate = (date) => {
         return dayjs(date).format("DD/MM/YYYY");

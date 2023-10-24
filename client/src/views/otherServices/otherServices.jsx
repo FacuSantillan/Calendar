@@ -18,18 +18,22 @@ const OtherServices = ({guardarInformacion}) => {
         apellido: informacion.apellido,
         telefono: informacion.telefono,
         turnos:{
-          servicio:[""],
+          servicios:[''],
         }
       });
 
-      const data = clientData.turnos
+      const data = clientData.turnos.servicios
 
       const handleChange = (event) => {
-        const property = event.target.name;
         const value = event.target.value;
-        setClientData({ ...data, [property]: value });
-        console.log(data)
-    };
+        setClientData(prevClientData => ({
+          ...prevClientData,
+          turnos: {
+            ...prevClientData.turnos,
+            servicios: [value]  
+          }
+        }));
+      };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -45,11 +49,12 @@ const OtherServices = ({guardarInformacion}) => {
       <div className={styles.container}>
         <WhatsApp/>
   <h1 className={styles.header}>Servicio personalizado</h1>
+  
   <input
   placeholder="Detalle el servicio que desea"
     className={styles.inputField}
     onChange={handleChange}
-    type="text"
+    type="textarea"
     name="servicio"
     id="servicio"
     autoComplete="servicio"

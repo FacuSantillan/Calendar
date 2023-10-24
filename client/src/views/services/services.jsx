@@ -67,9 +67,9 @@ const Services = ({guardarInformacion}) => {
   };
 
     return(
-
+      
       <div className={style.container}>
-      <h1>Selecciona el servicio que desea</h1>
+      <h1 className={style.h1}>Selecciona el servicio que desea</h1>
       <select value={clientData.turnos.servicios[i]} onChange={handleSelectChange} className={style.select}>
 
         <option value="defaultValue" selected>Peluqueria</option>
@@ -97,16 +97,21 @@ const Services = ({guardarInformacion}) => {
       </select>
       <button onClick={handleAddItem} className={style.button1}>Agregar</button>
 
-      <ul className={style.ul}>
+<div>
+<ul className={style.ul}>
         {data.map((item, index) => (
           <li className={style.li} key={index}>
             {item} <button className={`${style.boton}`} value={item} onClick={() => deleteItem(item)}> X </button>
           </li>
         ))}
       </ul>
-        
+</div>
+      
+        <div className={style.buttons}>
       <button disabled={!isFormComplete} onClick={handleSubmit} type="submit" className={style.button}>Siguiente</button>
       <button onClick={otherService} type="submit" className={style.button}>Servicio personalizado</button>
+        </div>
+
     </div>
 
     )

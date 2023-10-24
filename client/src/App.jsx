@@ -10,7 +10,9 @@ import OtherServices from './views/otherServices/otherServices';
 import DashBoard from './views/dashBoard/dashBoard';
 
 import axios from 'axios'
-axios.defaults.baseURL = 'https://calendar-production.up.railway.app/'
+
+axios.defaults.baseURL = 'http://localhost:3001/'
+// axios.defaults.baseURL = 'https://calendar-production.up.railway.app/'
 
 function App() {
 

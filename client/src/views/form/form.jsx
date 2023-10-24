@@ -42,7 +42,6 @@ const handleChange = (event) => {
         <div className="form-group">
           <h3>Nombre</h3>
           <input
-          placeholder="Abigail"
             className="form-control"
             onChange={handleChange}
             value={clientData.nombre}
@@ -55,7 +54,6 @@ const handleChange = (event) => {
         <div className="form-group">
           <h3>Apellido</h3>
           <input
-            placeholder="Sanchez"
             className="form-control"
             onChange={handleChange}
             value={clientData.apellido}
@@ -68,7 +66,6 @@ const handleChange = (event) => {
         <div className="form-group">
           <h3>Teléfono</h3>
           <input
-           placeholder="3865-111111"
             className="form-control"
             onChange={handleChange}
             value={clientData.telefono}
