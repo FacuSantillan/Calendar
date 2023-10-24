@@ -9,6 +9,9 @@ import Confirmation from './views/confirmation/confirmation';
 import OtherServices from './views/otherServices/otherServices';
 import DashBoard from './views/dashBoard/dashBoard';
 
+import axios from 'axios'
+axios.defaults.baseURL = 'http://localhost:3001'
+
 function App() {
 
   return (
