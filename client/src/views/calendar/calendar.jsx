@@ -10,12 +10,14 @@ import style from './calendar.module.css'
 function Calendario({guardarInformacion}) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [horas, setHoras] = useState ([]);
-
+    
     const allReservas = useSelector((state) => state.Reservas);
     const informacion = useSelector(state => state.informacion);
     
+    const [horas, setHoras] = useState ([]);
+    const [selectedDay, setSelectedDay] = useState('');
     const [isFormComplete, setIsFormComplete] = useState(false);
+
     const [clientData, setClientData] = useState({
         nombre: informacion.nombre,
         apellido: informacion.apellido,
@@ -39,64 +41,76 @@ function Calendario({guardarInformacion}) {
     };
     
     const handleDateChange = (date) => {
-        handleFilterHours()
+        const selectedDate = new Date(date);
+        const dayOfWeek = selectedDate.getDay();
+
+    switch (dayOfWeek) {
+        case 0:
+            setSelectedDay("Domingo");
+            break;
+        case 1:
+            setSelectedDay("Lunes");
+            break;
+        case 2:
+            setSelectedDay("Martes");
+            break;
+        case 3:
+            setSelectedDay("Miércoles");
+            break;
+        case 4:
+            setSelectedDay("Jueves");
+            break;
+        case 5:
+            setSelectedDay("Viernes");
+            break;
+        case 6:
+            setSelectedDay("Sábado");
+            break;
+        default:
+            console.log("Error: Día no válido");
+            break;
+    }
+        handleFilterHours();
         setDateValue(date);
+
     };
-    
+
     const loadHorarios = () => {
+        if (selectedDay === 'Lunes') {
+            const uniqueHoras = new Set(["17hs", "18hs", "19hs", "20hs"]);
+            setHoras(Array.from(uniqueHoras));
+        } else if (selectedDay === 'Martes' || selectedDay === 'Miércoles' || selectedDay === 'Jueves' || selectedDay === 'Viernes' || selectedDay === 'Sabado') {
+            const uniqueHoras = new Set(["09hs", "10hs", "11hs", "12hs", "14hs", "15hs", "16hs", "17hs", "18hs", "19hs", "20hs"]);
+            setHoras(Array.from(uniqueHoras));
+        }
+    };
 
-        if (horas.length < 4) {
-            const uniqueHoras = new Set(horas);
-
-            uniqueHoras.add("17hs");
-            uniqueHoras.add("18hs");
-            uniqueHoras.add("19hs");
-            uniqueHoras.add("20hs");
+    const handleFilterHours = (date) => {
+        loadHorarios();
     
-            const newHoras = Array.from(uniqueHoras);
+        const reservationsByHour = {};
     
-            setHoras(newHoras);
-        }};
-
-        const handleFilterHours = (date) => {
-            loadHorarios();
-
-            var container = [];
-            var container1 = [];
-            var container2 = [];
-            var container3 = [];
-
-            if (allReservas.length) {
-                for (var i = 0; i < allReservas.length; i++) {
-                    var date = allReservas[i].turnos[0].fecha;
-                    var hour = allReservas[i].turnos[0].hora;
-        
-                    if (hour === "17hs" && date === formatDate(dateValue)) {
-                        container.push(hour);
-                    } else if (hour === "18hs" && date === formatDate(dateValue)) {
-                        container1.push(hour);
-                    } else if (hour === "19hs" && date === formatDate(dateValue)) {
-                        container2.push(hour);
-                    } else if (hour === "20hs" && date === formatDate(dateValue)) {
-                        container3.push(hour);
+        if (allReservas.length) {
+            for (var i = 0; i < allReservas.length; i++) {
+                var date = allReservas[i].turnos[0].fecha;
+                var hour = allReservas[i].turnos[0].hora;
+    
+                if (date === formatDate(dateValue)) {
+                    if (reservationsByHour[hour]) {
+                        reservationsByHour[hour]++;
+                    } else {
+                        reservationsByHour[hour] = 1;
                     }
                 }
-        
-                if (container.length === 4) {
-                    const res = setHoras(horas.filter(hora => hora !== "17hs"));
-       
-                }else  if (container1.length === 4) {
-                    const res = setHoras(horas.filter(hora => hora !== "18hs"));
-
-                }else  if (container2.length === 4) {
-                    const res = setHoras(horas.filter(hora => hora !== "19hs"));
-          
-                } else  if (container3.length === 4) {
-                    const res = setHoras(horas.filter(hora => hora !== "20hs"));
-            
+            }
+    
+            for (const [hour, reservations] of Object.entries(reservationsByHour)) {
+                if (reservations >= 4) {
+                    setHoras(prevHoras => prevHoras.filter(hora => hora !== hour));
                 }
             }
-        };
+        }
+    };
 
         useEffect(() => {
             handleFilterHours();
