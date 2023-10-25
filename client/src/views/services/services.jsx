@@ -1,5 +1,4 @@
 import style from './services.module.css'
-import logo from '../../assets/logopel.png'
 
 import { guardarInformacion, getReservas } from "../../redux/actions"
 import { useSelector, useDispatch } from 'react-redux';
@@ -71,8 +70,7 @@ const Services = ({guardarInformacion}) => {
     return(
       
       <div >
-         <img className={style.logo} src={logo} alt='logo'/>
-         
+
       <div className={style.container}>
       <h1 className={style.h1}>Selecciona el servicio que desea</h1>
       <select value={clientData.turnos.servicios[i]} onChange={handleSelectChange} className={style.select}>
