@@ -87,6 +87,7 @@ const Services = ({guardarInformacion}) => {
         <option value="Nutricion">Nutricion</option>
         <option value="Nutricion L'Oréal">Brushing</option>
         <option value="Diagnosticos">Diagnosticos</option>
+        <option value="Retoque de color">Retoque de color</option>
 
       </select>
       <select value={clientData.turnos.servicios[i]} onChange={handleSelectChange} className={style.select}>

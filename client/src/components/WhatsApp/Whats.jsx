@@ -6,7 +6,7 @@ export default function WhatsApp () {
     
     return(
         <div>
-            <a href='https://wa.me/543513410820?text=Hola!%20quiero%20realizar%20una%20consulta'><img className={style.logo} src={Logo}/></a>
+            <a href='https://wa.me/543865508218?text=Hola!%20quiero%20realizar%20una%20consulta'><img className={style.logo} src={Logo}/></a>
         </div>
     )
 }; 
