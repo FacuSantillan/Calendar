@@ -1,6 +1,6 @@
 
 import Logo from '../../assets/logoIg.png'
-import style from './Instagram.module.css'
+import style from './instagram.module.css'
 
 export default function Instagram () {
     
