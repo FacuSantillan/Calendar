@@ -55,9 +55,4 @@
     background-color: #0c0025;
   }
   
-  @media (max-width: 600px) {
-    .form-container {
-      max-width: none;
-      padding: 10px;
-    }
-  }
+ 

@@ -9,6 +9,7 @@ import Confirmation from './views/confirmation/confirmation';
 import OtherServices from './views/otherServices/otherServices';
 import DashBoard from './views/dashBoard/dashBoard';
 
+import logo from './assets/logopel.png'
 import axios from 'axios'
 
 // axios.defaults.baseURL = 'http://localhost:3001/'
@@ -18,6 +19,8 @@ function App() {
 
   return (
     <div>
+      <img className='logo' src={logo} alt='logo'/>
+
       <Routes>
         <Route path='/' element={<Form/>}/>
         <Route path='/services' element={<Services/>}/>

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { guardarInformacion, addReserva } from "../../redux/actions";
 
+import logo from '../../assets/logopel.png'
 import style from './confirmation.module.css'
 
 function Confirmation({guardarInformacion}) {
@@ -37,6 +38,8 @@ function Confirmation({guardarInformacion}) {
 
     return (
         <div className={style.container}>
+
+
         <h1 className={style.title}>Datos del turno:</h1>
         <h3 className={style.subtitle}>Turno seleccionado para el: {clientData.turnos.fecha}</h3>
         <h3 className={style.subtitle}>A las: {clientData.turnos.hora}</h3>

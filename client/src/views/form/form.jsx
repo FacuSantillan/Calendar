@@ -1,7 +1,8 @@
 import { guardarInformacion } from "../../redux/actions"
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 import { connect } from 'react-redux';
+import { useState } from 'react';
+
 import './form.css'
 
 const Form = ({ guardarInformacion }) => {
