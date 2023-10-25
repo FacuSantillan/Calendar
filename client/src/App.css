@@ -122,6 +122,7 @@ body {
 
 .logo{
   position: fixed;
+  pointer-events: none;
   top: 85%;
   left: 55%;
   width: 45%;
