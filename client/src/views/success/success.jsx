@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 
+import Instagram from '../../components/Instagram/instagram'
 import WhatsApp from '../../components/WhatsApp/Whats'
 import style from './success.module.css'
 import check from '../../assets/check.png'
@@ -18,6 +19,7 @@ export default function Success(){
 
         <div className={style.component}>
             <WhatsApp/>
+            <Instagram/>
         </div>
 
             <h1 className={style.title}>Turno confirmado!</h1>

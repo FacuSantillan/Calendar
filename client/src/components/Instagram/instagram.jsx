@@ -1,0 +1,12 @@
+
+import Logo from '../../assets/LogoIg.png'
+import style from './Instagram.module.css'
+
+export default function Instagram () {
+    
+    return(
+        <div>
+            <a href='https://www.instagram.com/exclusiva_salon_de_autores/'><img className={style.logo} src={Logo}/></a>
+        </div>
+    )
+}; 
