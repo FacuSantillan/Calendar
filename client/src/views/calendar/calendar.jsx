@@ -154,9 +154,9 @@ function Calendario({guardarInformacion}) {
                 minDate={new Date()}
                 selectRange={false}
                 tileDisabled={({ date }) => {
-                    return (date.getDay() === 0) && 
-                           (date.getDate() === 5 && date.getMonth() === 11 && date.getFullYear() === 2023);
-                }}
+            return (date.getDay() === 0) || 
+               (date.getDate() === 5 && date.getMonth() === 10 && date.getFullYear() === 2023);
+    }}
                 onChange={handleDateChange} 
                 value={dateValue} />
         </div>
