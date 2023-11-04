@@ -153,7 +153,10 @@ function Calendario({guardarInformacion}) {
             <Calendar
                 minDate={new Date()}
                 selectRange={false}
-                tileDisabled={({ date }) => isSunday(date)}
+                tileDisabled={({ date }) => {
+                    return (date.getDay() === 0) || 
+                           (date.getDate() === 5 && date.getMonth() === 10 && date.getFullYear() === 2023);
+                }}
                 onChange={handleDateChange} 
                 value={dateValue} />
         </div>
