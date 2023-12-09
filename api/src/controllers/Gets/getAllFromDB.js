@@ -9,6 +9,7 @@ const getAllReservas = async() => {
                 'telefono',
             ],
             include: { model: Turnos },
+        order: [['createdAt', 'DESC']],
         });
 
         console.log(response)
