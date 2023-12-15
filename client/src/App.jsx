@@ -21,6 +21,7 @@ function App() {
 
   return (
     <div>
+
       {pathname === "/admin" && <Menu/>}
       {pathname === "/admin/diasyhoras" && <Menu/>}
       <Routes>
@@ -34,6 +35,7 @@ function App() {
         <Route path='/admin' element={<DashBoard/>}/>
         <Route path='/admin/diasyhoras' element={<DiasYHoras/>}/>
       </Routes>
+
     </div>
   )
 }

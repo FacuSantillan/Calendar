@@ -11,7 +11,7 @@ const { createAdmin } = require('../../controllers/Posts/postHorarios');
 const { updateAdmin } = require('../../controllers/Puts/putHorarios');
 
 const accountSid = 'ACcdf275c615c9416735249ba81184a07d';
-const authToken = '80b8032f458c48f8a437bfdf57a0afac';
+const authToken = 'c3019dff213daa738f2219b8d427ac96';
 const client = require('twilio')(accountSid, authToken);
 
 //-------------------Crear clientes y turnos------------------------------//
@@ -35,20 +35,12 @@ const postClient = async (req, res) => {
         };
     
         const newServicio = servicios[0][0][0]
-        client.messages
-        .create({
-            body: `¡Nuevo turno reservado! De: ${nombre} ${apellido}, el: ${fecha}, a las ${hora}, para: ${newServicio}, su número de teléfono es: ${telefono}.`,
-            from: 'whatsapp:+14155238886',
-            to: 'whatsapp:+5493865208851'
-        })
-        .then(message => console.log(message.sid))
-        .catch(error => console.error('Error al enviar el mensaje:', error))
-
+       
         client.messages
         .create({
             body: `¡Hola ${nombre}, gracias por reservar! Los datos de tu turno son: fecha: ${fecha}, hora: ${hora}, para: ${newServicio}.`,
             from: 'whatsapp:+14155238886',
-            to: `whatsapp:+549${telefono}`
+            to: `whatsapp:+5493513410820`
         })
         .then(message => console.log(message.sid))
         .catch(error => console.error('Error al enviar el mensaje:', error))
