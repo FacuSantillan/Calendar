@@ -2,7 +2,7 @@ const { Turnos } = require('../../db');
 
 const createTurno = async (turnoData) => {
     const { fecha, hora, servicio } = turnoData;
-    const adminId = "12ebefa1-6e92-41ea-9ca7-e1a16c215452";
+    const adminId = "393ee0ef-f8fd-409d-bd7f-c5635c5b097f";
 
     const newTurno = await Turnos.create({
         fecha,
