@@ -1,7 +1,15 @@
 .logo{
     position:fixed;
-    top:100%;
-    left: 20%;
+    top:4.3%;
+    left: 60%;
     width: 8.5vh;
     height: 8vh;
 }   
+
+@media screen and (max-width: 480px) {
+    .logo{
+        left: 65%;
+        top: 6.4%;
+        width: 8vh;
+    }
+}

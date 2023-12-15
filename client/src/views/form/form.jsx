@@ -1,13 +1,16 @@
 import { guardarInformacion } from "../../redux/actions"
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import logo from '../../assets/logopel.png'
 
 import './form.css'
 
 const Form = ({ guardarInformacion }) => {
     const navigate = useNavigate();
-
+    localStorage.clear();
+    
     const [isFormComplete, setIsFormComplete] = useState(false);
     const [clientData, setClientData] = useState({
     nombre: '',
@@ -19,10 +22,12 @@ const Form = ({ guardarInformacion }) => {
 });
 
 const adminView = (e) => {
-  if(clientData.nombre === 'admin' && clientData.apellido === 'admin' && clientData.telefono === '203320'){
+  if(clientData.nombre === 'admin' && clientData.apellido === 'admin' && clientData.telefono === '123123123'){
     guardarInformacion(clientData);
+    const telefono = clientData.telefono;
+    localStorage.setItem('telefonoUsuario', telefono);
     navigate('/admin');
-  } else{
+  } else {
     e.preventDefault();
     guardarInformacion(clientData);
     navigate('/services');
@@ -34,12 +39,17 @@ const handleChange = (event) => {
     const value = event.target.value;
     setClientData({ ...clientData, [property]: value });
 
-    const formComplete = Object.values(clientData).every(value => value !== '');
-    setIsFormComplete(formComplete);
+    if(clientData.telefono.length > 6){
+      const formComplete = Object.values(clientData).every(value => value !== '');
+      setIsFormComplete(formComplete);
+    }else{setIsFormComplete('')}
 };
+
 
     return(
         <div className="form-container">
+           <img className='logo' src={logo} alt='logo'/>
+
         <div className="form-group">
           <h3>Nombre</h3>
           <input
@@ -74,15 +84,16 @@ const handleChange = (event) => {
             id="telefono"
             name="telefono"
             autoComplete="telefono"
+            placeholder="3865123123"
           />
-        </div>
-        <div>
         <button className="button"
                 onClick={adminView}
                 type="submit"
                 disabled={!isFormComplete}>
           Siguiente
         </button>
+        </div>
+        <div>
         </div>
       </div>
     

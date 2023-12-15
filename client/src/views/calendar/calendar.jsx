@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector, connect, useDispatch } from 'react-redux';
-import { guardarInformacion } from "../../redux/actions"
+import { guardarInformacion, getHorarios } from "../../redux/actions"
 import { useNavigate } from 'react-router-dom';
 
 import Calendar from 'react-calendar';
@@ -13,6 +13,11 @@ function Calendario({guardarInformacion}) {
     
     const allReservas = useSelector((state) => state.Reservas);
     const informacion = useSelector(state => state.informacion);
+    const Horarios = useSelector((state) => state.horarios);
+
+    useEffect(()=>{
+        dispatch(getHorarios())
+      },[])
     
     const [horas, setHoras] = useState ([]);
     const [selectedDay, setSelectedDay] = useState('');
@@ -28,6 +33,12 @@ function Calendario({guardarInformacion}) {
             servicios:[informacion.turnos.servicios]
         }
     });
+
+    useEffect(()=>{
+        if(clientData.nombre === undefined || clientData.apellido=== undefined || clientData.telefono=== undefined){
+          navigate('/');
+        }
+      },[])
 
     const [dateValue, setDateValue] = useState(new Date());
     const formatDate = (date) => {
@@ -67,7 +78,6 @@ function Calendario({guardarInformacion}) {
             setSelectedDay("Sábado");
             break;
         default:
-            console.log("Error: Día no válido");
             break;
     }
         handleFilterHours();
@@ -77,10 +87,36 @@ function Calendario({guardarInformacion}) {
 
     const loadHorarios = () => {
         if (selectedDay === 'Lunes') {
-            const uniqueHoras = new Set(["17hs", "18hs", "19hs", "20hs"]);
+            const uniqueHoras = new Set(Horarios[0].Lunes);
             setHoras(Array.from(uniqueHoras));
-        } else if (selectedDay === 'Martes' || selectedDay === 'Miércoles' || selectedDay === 'Jueves' || selectedDay === 'Viernes' || selectedDay === 'Sabado') {
-            const uniqueHoras = new Set(["09hs", "10hs", "11hs", "12hs", "14hs", "15hs", "16hs", "17hs", "18hs", "19hs", "20hs"]);
+        }
+        
+        if (selectedDay === 'Martes') {
+            const uniqueHoras = new Set(Horarios[0].Martes);
+            setHoras(Array.from(uniqueHoras));
+        }
+        
+        if (selectedDay === 'Miércoles') {
+            const uniqueHoras = new Set(Horarios[0].Miércoles);
+            setHoras(Array.from(uniqueHoras));
+        }
+        
+        if (selectedDay === 'Jueves') {
+            const uniqueHoras = new Set(Horarios[0].Jueves);
+            setHoras(Array.from(uniqueHoras));
+        }
+
+        if (selectedDay === 'Viernes') {
+            const uniqueHoras = new Set(Horarios[0].Viernes);
+            setHoras(Array.from(uniqueHoras));
+        }
+        
+        if (selectedDay === 'Sábado') {
+            const uniqueHoras = new Set(Horarios[0].Sábado);
+            setHoras(Array.from(uniqueHoras));
+        }
+        if (selectedDay === 'Domingo') {
+            const uniqueHoras = new Set(Horarios[0].Domingo);
             setHoras(Array.from(uniqueHoras));
         }
     };
@@ -154,21 +190,19 @@ function Calendario({guardarInformacion}) {
                 minDate={new Date()}
                 selectRange={false}
                 tileDisabled={({ date }) => {
-                    return isSunday(date) || 
-                           (date.getDate() === 4 && date.getMonth() === 10 && date.getFullYear() === 2023);
-                }}
+                    return isSunday(date) }}
                 onChange={handleDateChange} 
                 value={dateValue} />
         </div>
         <p>Fecha seleccionada: {formatDate(dateValue)}</p>
-        <div>
+        <div className={style.buttonRow}>
             <h3>Horarios disponibles:</h3>
-            {horas.map((item, index) => (
-                <>
-                    <button className={style.button2}  name="hora" value={item} onClick={exportData} key={index}>{item} </button>
-                </>
-            ))}
-            <p>Hora seleccionada: {clientData.turnos.hora}</p>
+            <div className={style.buttonContainer}>
+        {horas.map((item, index) => (
+        <button className={style.button2} name="hora" value={item} onClick={exportData} key={index}>{item}</button>
+        ))}
+    </div>
+    <p>Hora seleccionada: {clientData.turnos.hora}</p>
         </div>
         <button className={style.button} onClick={handleSubmit} type="submit" disabled={!isFormComplete}>Siguiente</button>
         <button className={style.button} onClick={services} type="submit">Atras</button>

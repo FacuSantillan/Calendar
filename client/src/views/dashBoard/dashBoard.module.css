@@ -1,10 +1,249 @@
 .title{
     display: grid;
-    justify-content: center;
+    justify-content: left;
+    margin-left: 7%;
+    margin-top: 1.9%;
     text-justify: center;
     font-size: 25px;
 }
-.card{
+.column{
     position: absolute;
-    left: 5%;
+    top: 90%;
+    left: 12%;
+}
+
+.button {
+  position: absolute;
+  left: 7.4%;
+  top: 13%;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #29007a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0c0025;
+}
+
+.button:focus {
+  outline: none;
+}
+
+    h4{
+    position: relative;
+    display: inline;
+    justify-content: center; /* Alinea el contenido al centro horizontal */
+    width: 85%; /* Ancho del contenido */
+    margin-left: 53.5%;
+    margin-top: 5%;
+  }
+
+  .column4{
+    margin-left: 47%;
+  }
+
+  .column2{
+    margin-left: 56%;
+  }
+
+  .reactCalendar {
+    position: absolute;
+    top: 25%;
+    left: 45%;
+    width: 70vh;
+    margin-left: -10%;
+    height: 50vh;
+    color: #ffffff;
+    border-radius: 0px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(30px);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.125em;
+  }
+  
+  /* Estilos para la navegación del calendario */
+  .reactCalendar__navigation button {
+    position: absolute;
+    left: 12%;
+    color: #ffffff;
+    padding: 4%;
+    min-width: 44px;
+    background: none;
+    font-size: 10px;
+    margin-top: 5px;
+    border: 0px;
+  }
+  
+  /* Pseudoclases para botones de navegación */
+  .reactCalendar__navigation button:enabled:hover,
+  .reactCalendar__navigation button:enabled:focus {
+    background-color: #ffffff55;
+  }
+  
+  .reactCalendar__navigation button[disabled] {
+    background-color: #ffffff;
+  }
+  
+  /* Estilos para días de fin de semana */
+  abbr[title] {
+    text-decoration: none;
+  }
+  
+  .reactCalendar__month-view__days__day--weekend {
+    height: 0vh;
+    font-size: 10px;
+    color: #d10000;
+  }
+  
+  /* Estilos para las baldosas (tiles) del calendario */
+  .reactCalendar__tile:enabled:hover,
+  .reactCalendar__tile:enabled:focus {
+    color: #ffffff;
+    border-radius: 0px;
+  }
+  
+  /* Estilos para el día actual */
+  .reactCalendar__tile--now {
+    background: #ff000030;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  /* Estilos para el día actual al interactuar */
+  .reactCalendar__tile--now:enabled:hover,
+  .reactCalendar__tile--now:enabled:focus {
+    background: #a4b58d33;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  /* Estilos para el día con actividad */
+  .reactCalendar__tile--hasActive:enabled:hover,
+  .reactCalendar__tile--hasActive:enabled:focus {
+    background: #f8f8fa;
+  }
+  
+  /* Estilos para el día activo */
+  .reactCalendar__tile--active {
+    background: #ffffff;
+    border-radius: 6px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  /* Estilos para el día activo al interactuar */
+  .reactCalendar__tile--active:enabled:hover,
+  .reactCalendar__tile--active:enabled:focus {
+    background: #ffffff;
+    color: white;
+  }
+  
+  /* Estilos para selección de rango en el calendario */
+  .reactCalendar--selectRange .reactCalendar__tile--hover {
+    background-color: #f8f8fa;
+  }
+  
+  /* Estilos para las baldosas en un rango seleccionado */
+  .reactCalendar__tile--range {
+    background: #f8f8fa;
+    color: #ffffff;
+    border-radius: 0;
+  }
+  
+  /* Estilos para el inicio del rango seleccionado */
+  .reactCalendar__tile--rangeStart {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    background: #ffffff;
+    color: white;
+  }
+  
+  /* Estilos para el final del rango seleccionado */
+  .reactCalendar__tile--rangeEnd {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background: #ffffff;
+    color: white;
+  }
+  
+  /* Estilos para transiciones de ruta (route transition) */
+  .route-transition {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .route-enter-active {
+    opacity: 1;
+  }
+  
+  .route-exit-active {
+    opacity: 0;
+  }
+
+@media screen and (max-width: 480px) {
+    .title{
+        justify-content: center;
+        margin-left: 15%;
+    }
+
+  .column{
+    font-size: 7px;
+    left: 115%;
+    margin-left: -103%;
+    color: transparent;
+  }
+  .column1{
+    font-size: 7px;
+    margin-left: 9%;
+  }
+
+  .column4{
+    font-size: 7px;
+      margin-left: 9%;
+  }
+
+  .column3{
+    font-size: 7px;
+    margin-left: 9%;
+  }
+
+  .column5{
+    font-size: 7px;
+    margin-left: 9%;
+  }
+
+  .column2{
+    font-size: 7px;
+    margin-left: 9%;
+  }
+
+    h4{
+        font-size: 14px;
+        margin-left: 0%;
+    }
+    .button{
+      left: 17%;
+      width: 40%;
+    }
+    .reactCalendar{
+      width: 82%;
+      height: 61%;
+      left: 27%;
+    }
+    .title{
+      margin-top: 7%;
+      font-size: 30px;
+    }
 }

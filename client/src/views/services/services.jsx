@@ -26,9 +26,11 @@ const Services = ({guardarInformacion}) => {
       }
     });
 
-  useEffect(() => {
-    dispatch(getReservas())
-  }, []);
+    useEffect(()=>{
+      if(clientData.nombre === undefined || clientData.apellido=== undefined || clientData.telefono=== undefined){
+        navigate('/');
+      }
+    },[])
 
     let data = clientData.turnos.servicios
     let i = data.length
@@ -44,20 +46,21 @@ const Services = ({guardarInformacion}) => {
     };
 
     const handleSelectChange = (e) => {
-      const selectedService = e.target.value;
-      const data = clientData.turnos.servicios
-      data.push(selectedService)
-
-      const formComplete = Object.values(clientData).every(value => value !== '');
-      setIsFormComplete(formComplete);
-  };
-
-    const handleAddItem = () => {
-      setSelectedItems([...data]);
+       const selectedService = e.target.value;
+        setClientData(prevState => ({
+            ...prevState,
+            turnos: {
+                ...prevState.turnos,
+                servicios: [...prevState.turnos.servicios, selectedService]
+            }
+        }));
+        const formComplete = Object.values(clientData).every(value => value !== '');
+        setIsFormComplete(formComplete);
+      
   };
   
   const deleteItem = (value) => {
-    let res = data.filter(item => item !== value);
+    let res = clientData.turnos.servicios.filter(item => item !== value);
     setClientData(prevState => ({
       ...prevState,
       turnos: {
@@ -69,10 +72,11 @@ const Services = ({guardarInformacion}) => {
 
     return(
       
-      <div >
+      <div className={style.all} >
 
       <div className={style.container}>
       <h1 className={style.h1}>Selecciona el servicio que desea</h1>
+      <div className={style.selectContainer}>
       <select value={clientData.turnos.servicios[i]} onChange={handleSelectChange} className={style.select}>
 
         <option value="defaultValue" selected>Peluqueria</option>
@@ -99,11 +103,12 @@ const Services = ({guardarInformacion}) => {
         <option value="Belleza de pies">Belleza de pies</option>
         
       </select>
-      <button onClick={handleAddItem} className={style.button1}>Agregar</button>
+
+      </div>
 
 <div>
 <ul className={style.ul}>
-        {data.map((item, index) => (
+        {clientData.turnos.servicios.map((item, index) => (
           <li className={style.li} key={index}>
             {item} <button className={`${style.boton}`} value={item} onClick={() => deleteItem(item)}> X </button>
           </li>

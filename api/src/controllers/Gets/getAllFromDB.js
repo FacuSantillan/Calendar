@@ -7,11 +7,11 @@ const getAllReservas = async() => {
                 'nombre',
                 'apellido',
                 'telefono',
+                'createdAt'
             ],
             include: { model: Turnos },
+            order: [['createdAt', 'DESC']],
         });
-
-        console.log(response)
 
         return response.map((res) => {
             return {
@@ -19,6 +19,7 @@ const getAllReservas = async() => {
                 nombre: res.dataValues.nombre,
                 apellido: res.dataValues.apellido,
                 telefono: res.dataValues.telefono,
+                creacion: res.dataValues.createdAt,
                 turnos: res.dataValues.Turnos.map((turno) => {
                     return {
                         hora: turno.hora,

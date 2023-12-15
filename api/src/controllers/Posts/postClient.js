@@ -3,9 +3,10 @@ const { createTurno } = require('./postTurno')
 
 const { Op } = require("sequelize");
 
+
 const createClient = async (clientData) => {
     const { nombre, apellido, telefono, hora, fecha, servicio} = clientData;
-console.log(clientData)
+    
     const turnoData = {
         fecha,
         hora,
@@ -27,15 +28,13 @@ console.log(clientData)
      
 const result = await Clients.findOne({
     where: {
-        id: newClient.id, // Buscamos la receta por su ID recién creada
+        id: newClient.id, 
     },
     attributes: ['id', 'nombre', 'apellido', 'telefono'],
     include: [{ model: Turnos }],
 });
-
-
-
-return result;
+ 
+    return result;
 };
 
 

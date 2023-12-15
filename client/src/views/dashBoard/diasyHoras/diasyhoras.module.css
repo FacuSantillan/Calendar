@@ -1,0 +1,88 @@
+/* diasyhoras.module.css */
+
+/* Estilos para el contenedor principal */
+.container {
+    position: relative;
+    left: 5%;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 89%;
+  }
+  
+  .button {
+    background-color: #1f9cb5; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilos */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima */
+    font-size: 16px; /* Tamaño del texto */
+  }
+  
+  /* Estilos cuando el cursor está sobre el botón */
+  .button:hover {
+    background-color: rgb(34, 126, 122); /* Cambio de color al pasar el cursor */
+  }
+  /* Estilos para el título */
+  .title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos para el selector de días */
+  .select-day {
+    margin-bottom: 20px;
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  /* Estilos para los botones de horarios */
+  .time-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .time-buttons button {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+  
+  .time-buttons button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .selected-times-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .selected-time {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .selected-time button {
+    padding: 6px 10px;
+    margin-left: 10px;
+    background-color: #ff6464;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .selected-time button:hover {
+    background-color: #ff4747;
+  }

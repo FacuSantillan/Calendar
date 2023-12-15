@@ -34,12 +34,22 @@ sequelize.models = Object.fromEntries(capsEntries);
 const { Clients } = sequelize.models;
 const { Turnos } = sequelize.models;
 const { Reserva } = sequelize.models;
+const { Admin } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
 Clients.belongsToMany(Turnos, { through:'Reserva' })
 Turnos.belongsToMany(Clients, { through:'Reserva' })
+
+Admin.hasMany(Turnos, { as: 'HorarioLunes', foreignKey: 'AdminId' });
+Admin.hasMany(Turnos, { as: 'HorarioMartes', foreignKey: 'AdminId' });
+Admin.hasMany(Turnos, { as: 'HorarioMiércoles', foreignKey: 'AdminId' });
+Admin.hasMany(Turnos, { as: 'HorarioJueves', foreignKey: 'AdminId' });
+Admin.hasMany(Turnos, { as: 'HorarioViernes', foreignKey: 'AdminId' });
+Admin.hasMany(Turnos, { as: 'HorarioSábado', foreignKey: 'AdminId' });
+Admin.hasMany(Turnos, { as: 'HorarioDomingo', foreignKey: 'AdminId' });
+
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

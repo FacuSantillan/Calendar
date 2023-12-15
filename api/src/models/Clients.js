@@ -25,5 +25,5 @@ module.exports = (sequelize) => {
       unique: false,
     },
   },
-  {timestamps:false});
+);
 };

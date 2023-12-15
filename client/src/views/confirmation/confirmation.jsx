@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -22,6 +22,13 @@ function Confirmation({guardarInformacion}) {
             servicios:[informacion.turnos.servicios]
         }
     });
+
+    useEffect(()=>{
+      if(clientData.nombre === undefined || clientData.apellido=== undefined || clientData.telefono=== undefined){
+        navigate('/');
+      }
+    },[])
+    
        const handleSubmit = (event) => {
             event.preventDefault();
             dispatch(addReserva(clientData)).then(() => {
@@ -45,8 +52,8 @@ function Confirmation({guardarInformacion}) {
         <h3 className={style.subtitle}>A las: {clientData.turnos.hora}</h3>
         <h3 className={style.subtitle}>Para: {cadenaSeparadaPorComas}</h3>
         <div className={style.buttonContainer}>
-          <button className={`${style.button} ${style.back}`} onClick={turnoData}>Atras</button>
           <button className={`${style.button} ${style.confirm}`} onClick={handleSubmit}>Confirmar</button>
+          <button className={`${style.button} ${style.back}`} onClick={turnoData}>Atras</button>
         </div>
       </div>
     );

@@ -18,10 +18,10 @@ export default function Card(props) {
         <div className={style.contenedor}>
             <img src={persona} alt="img" className={style.imagen} />
             <h3 className={style.nombre}>{capitalizarPrimeraLetra(nombre)} {capitalizarPrimeraLetra(apellido)}</h3>
-            <p className={style.detalle}><b>Telefono:</b> {telefono}</p>
-            <p className={style.detalle}><b>Hora:</b> {hora}</p>
-            <p className={style.detalle}><b>Fecha:</b> {fecha}</p>
-            <p className={style.detalle}><b>Servicio:</b> {cadenaSeparadaPorComas}</p>
+            <p className={style.telefono}><b></b> {telefono}</p>
+            <p className={style.hora}><b></b> {hora}</p>
+            <p className={style.fecha}><b></b> {fecha}</p>
+            <p className={style.servicio}><b></b> {cadenaSeparadaPorComas}</p>
         </div>
     )
 }

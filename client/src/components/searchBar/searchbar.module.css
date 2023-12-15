@@ -1,0 +1,19 @@
+.input{
+    position: absolute;
+    margin-left: 80%;
+    top: 13.5%;
+    width: 15%;
+    height: 30px;
+    padding: 5px;
+    border: 0px solid #ccc;
+    border-radius: 20px;
+    font-size: 1em;
+    z-index: 999;
+}
+
+@media screen and (max-width: 480px) {
+    .input{
+        width: 40%;
+        left: -21%;
+    }
+}

@@ -1,8 +1,18 @@
 .app {
     text-align: center;
+    height: 100% auto;
+    max-width: 400px;
+    margin: 100px auto 0 auto; 
+    padding: 30px;
+    background-color: #ffffff2c;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(30px); 
+    margin-top: 5%;
   }
   
   .textCenter {
+    margin-top: -5%;
     font-size: 20px;
     text-align: center;
   }
@@ -34,32 +44,41 @@
     width: 50%;
     margin: 0.5em;
   }
-  
+
   .buttonContainer {
-    display: flex;
-    justify-content: center;
-    margin: 1em 0;
+    max-width: 130%; 
+    overflow-x: auto; 
+    white-space: nowrap; 
+    margin-bottom: 15px; 
+
   }
-  .button2{
-    display: flexbox;
-    width: 20%;
-    padding: 10px;
-    background-color: #29007a;
+  .buttonContainer::-webkit-scrollbar {
+    width: 8px; /* Ancho de la barra de desplazamiento */
+  }
+  
+  .buttonContainer::-webkit-scrollbar-thumb {
+    background-color: #999; /* Color del thumb (la parte desplazable) */
+    border-radius: 4px; /* Borde redondeado del thumb */
+  }
+  
+  .buttonContainer::-webkit-scrollbar-track {
+    background-color: transparent; /* Color del track (la parte no desplazable) */
+  }
+  .button2 {
+    padding: 12px 14px;
     border: none;
-    border-radius: 40px;
+    border-radius: 4px;
+    background-color: #29007a;
     color: #fff;
-    font-size: 1em;
     cursor: pointer;
-    font-weight: bold;
-    margin: 0.5em 1px;
-  }
-  .button2:hover{
-    background-color: #0c0025;
+    font-size: 14px;
+    margin-right: 10px; /* Agrega margen a la derecha de cada botón */
+    margin-bottom: 10px; /* Agrega margen inferior a cada botón */
   }
 
 .button {
   display: block;
-  width: 100%;
+  width: 55vh;
   padding: 10px;
   background-color: #29007a;
   border: none;
@@ -68,7 +87,8 @@
   font-size: 1em;
   cursor: pointer;
   font-weight: bold;
-  margin: 0.5em 0; /* Añade margen vertical de 0.5em (ajusta según necesites) y 0 de margen horizontal */
+  margin: 0.5em 0;
+  margin-left: 7%;
 }
 
 .button:disabled {
@@ -79,4 +99,11 @@
 
   .button:hover {
     background-color: #0c0025;
+  }
+
+  @media screen and (max-width: 480px) {
+    .button {
+    margin-left: -4.7%;
+    width: 47.2vh;
+    }
   }

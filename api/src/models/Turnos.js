@@ -1,9 +1,8 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-
-  sequelize.define('Turnos', {
-    id:{
+  const Turnos = sequelize.define('Turnos', {
+    id: {
       type: DataTypes.STRING,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
@@ -13,10 +12,13 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-
     hora: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    AdminId: {
+      type: DataTypes.STRING, 
+      allowNull: true,
     },
     servicio: {
       type: DataTypes.TEXT,
@@ -29,9 +31,11 @@ module.exports = (sequelize) => {
         this.setDataValue('servicio', JSON.stringify(value));
       }
     }
+  });
 
-  },
-  {timestamps:false}
-  );
+  Turnos.associate = (models) => {
+    Turnos.belongsTo(models.Admin, { foreignKey: 'AdminId' });
+  };
 
+  return Turnos;
 };

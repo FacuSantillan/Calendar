@@ -1,64 +1,64 @@
 .container {
-    margin: 140px auto 0 auto;
-    max-width: 400px;
-    margin: 10 auto;
-    padding: 20px;
-    background-color: #00000082;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(30px);
-  }
-  
-  .title {
-    text-align: center;
-    font-size: 1.5em;
-    margin-bottom: 20px;
-    color: #fff;
-  }
+  margin: 140px auto 0 auto;
+  max-width: 400px;
+  margin: 10 auto;
+  padding: 20px;
+  background-color: #00000082;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(30px);
+}
 
-  .logo{
-    position: absolute;
-    width: 45%;
-    left: 28%;
-    top: -34%;
-  }
-  
-  .subtitle {
-    text-align: center;
-    font-size:medium;
-    color: #fff;
-    margin-bottom: 10px;
-  }
-  
-  .button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .button {
-    width: 100%;
-    padding: 10px;
-    background-color: #29007a;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 1em;
-    cursor: pointer;
-    font-weight: bold;
-    margin: 0.5em 0;
-  }
-  
-  .button.confirm {
-    color: white;
-    background-color: #29007a;
-  }
-  
-  .button.back {
-    color: white;
-    background-color: #29007a;
-  }
-  
-  .button:hover {
-    background-color: #0c0025;
-  }
+.title {
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.logo{
+  position: absolute;
+  width: 45%;
+  left: 28%;
+  top: -34%;
+}
+
+.subtitle {
+  text-align: center;
+  font-size:medium;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.button {
+  width: 100%;
+  padding: 10px;
+  background-color: #29007a;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 0.5em 0;
+}
+
+.button.confirm {
+  color: white;
+  background-color: #29007a;
+}
+
+.button.back {
+  color: white;
+  background-color: #29007a;
+}
+
+.button:hover {
+  background-color: #0c0025;
+}
