@@ -11,7 +11,7 @@ const { createAdmin } = require('../../controllers/Posts/postHorarios');
 const { updateAdmin } = require('../../controllers/Puts/putHorarios');
 
 const accountSid = 'ACcdf275c615c9416735249ba81184a07d';
-const authToken = 'c3019dff213daa738f2219b8d427ac96';
+const authToken = '0b9fed4498dec2e262a0f2ff5030a4c0';
 const client = require('twilio')(accountSid, authToken);
 
 //-------------------Crear clientes y turnos------------------------------//
