@@ -141,7 +141,7 @@ function Calendario({guardarInformacion}) {
             }
     
             for (const [hour, reservations] of Object.entries(reservationsByHour)) {
-                if (reservations >= 4) {
+                if (reservations >= 2) {
                     setHoras(prevHoras => prevHoras.filter(hora => hora !== hour));
                 }
             }
