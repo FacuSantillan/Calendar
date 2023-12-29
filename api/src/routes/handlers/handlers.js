@@ -35,7 +35,17 @@ const postClient = async (req, res) => {
         };
     
         const newServicio = servicios[0][0][0]
-       
+
+         client.messages
+        .create({
+            body: `¡Nuevo turno reservado! De: ${nombre} ${apellido}, el: ${fecha}, a las ${hora}, para: ${newServicio}, su número de teléfono es: ${telefono}.`,
+            from: 'whatsapp:+14155238886',
+            to: 'whatsapp:+5493865208851'
+        })
+        .then(message => console.log(message.sid))
+        .catch(error => console.error('Error al enviar el mensaje:', error))
+        .done()
+        
         client.messages
         .create({
             body: `¡Hola ${nombre}, gracias por reservar! Los datos de tu turno son: fecha: ${fecha}, hora: ${hora}, para: ${newServicio}.`,
@@ -44,7 +54,8 @@ const postClient = async (req, res) => {
         })
         .then(message => console.log(message.sid))
         .catch(error => console.error('Error al enviar el mensaje:', error))
-
+        .done()
+        
         const newClient = await createClient(clientData);
         res.status(200).json(newClient);
 
