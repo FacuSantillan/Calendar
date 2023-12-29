@@ -4,19 +4,17 @@ const deleteClient = require('../../controllers/Delete/deleteClient');
 const putTurno = require('../../controllers/Puts/putTurno');
 const getAllHorarios = require('../../controllers/Gets/getHorarios');
 
+const { transporter } = require("../../nodeMailer/mailerController")
 const { createClient } = require('../../controllers/Posts/postClient');
 const { getClientByName } = require('../../controllers/Gets/getByName');
 const { getClientByDate } = require('../../controllers/Gets/getByDate');
 const { createAdmin } = require('../../controllers/Posts/postHorarios');
 const { updateAdmin } = require('../../controllers/Puts/putHorarios');
 
-const accountSid = 'ACcdf275c615c9416735249ba81184a07d';
-const authToken = '0b9fed4498dec2e262a0f2ff5030a4c0';
-const client = require('twilio')(accountSid, authToken);
 
 //-------------------Crear clientes y turnos------------------------------//
 const postClient = async (req, res) => {
-    try {
+ try {
         const { nombre, apellido, telefono, turnos } = req.body;
         const { hora, fecha, servicios } = req.body.turnos;
         const servicio = JSON.stringify(servicios);
@@ -36,24 +34,82 @@ const postClient = async (req, res) => {
 
         const newServicio = servicios[0][0][0];
 
-        // Enviar mensajes a través de Twilio
-        client.messages
-            .create({
-                body: `¡Nuevo turno reservado! De: ${nombre} ${apellido}, el: ${fecha}, a las ${hora}, para: ${newServicio}, su número de teléfono es: ${telefono}.`,
-                from: 'whatsapp:+14155238886',
-                to: 'whatsapp:+543865208851'
-            })
-            .then(message => console.log(message.sid))
-            .catch(error => console.error('Error al enviar el mensaje:', error));
-
-        client.messages
-            .create({
-                body: `¡Hola ${nombre}, gracias por reservar! Los datos de tu turno son: fecha: ${fecha}, hora: ${hora}, para: ${newServicio}.`,
-                from: 'whatsapp:+14155238886',
-                to: `whatsapp:+549${telefono}`
-            })
-            .then(message => console.log(message.sid))
-            .catch(error => console.error('Error al enviar el mensaje:', error));
+               await transporter.sendMail({
+                    from: '"Exclusiva Turnos" <Exclusiva.turnos@gmail.com>', // sender address
+                    to: "matiassantillan67@hotmail.com", // list of receivers
+                    subject: "¡Nuevo turno reservado!", // Subject line
+                    html: `
+                    <!DOCTYPE html>
+                    <html lang="es">
+                    <head>
+                        <meta charset="UTF-8">
+                        <title>Confirmación de reserva</title>
+                        <style>
+                            body {
+                                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                                background-color: #f5f5f5;
+                                margin: 0;
+                                padding: 0;
+                            }
+                            .container {
+                                width: 80%;
+                                margin: 20px auto;
+                                background-color: #ffffff;
+                                padding: 30px;
+                                border-radius: 8px;
+                                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+                            }
+                            h2 {
+                                color: #4e86e4;
+                                margin-bottom: 30px;
+                            }
+                            p {
+                                margin-bottom: 20px;
+                                color: #333333;
+                                font-size: 18px;
+                            }
+                            ul {
+                                list-style: none;
+                                padding: 0;
+                                text-align: left;
+                            }
+                            li {
+                                margin-bottom: 15px;
+                                color: #555555;
+                            }
+                            strong {
+                                font-weight: bold;
+                                color: #4e86e4;
+                            }
+                            .info {
+                                background-color: #f9f9f9;
+                                padding: 15px;
+                                border-radius: 6px;
+                            }
+                            .highlight {
+                                color: #fffffff;
+                                font-weight: bold;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="container">
+                            <h2>¡Hola Matias!</h2>
+                            <div class="info">
+                                <p>A continuación se detallan los datos de la reserva:</p>
+                                <ul>
+                                    <li><strong>Nombre:</strong> <span class="highlight">${nombre} ${apellido}</span></li>
+                                    <li><strong>Fecha:</strong> <span class="highlight">${fecha}</span></li>
+                                    <li><strong>Hora:</strong> <span class="highlight">${hora}</span></li>
+                                    <li><strong>Servicio:</strong> <span class="highlight">${newServicio}</span></li>
+                                    <li><strong>Teléfono:</strong> <span class="highlight">${telefono}</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </body>
+                    </html>
+                `
+                  });
 
         const newClient = await createClient(clientData);
         res.status(200).json(newClient);
