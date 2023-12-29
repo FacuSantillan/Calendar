@@ -41,7 +41,7 @@ const postClient = async (req, res) => {
             .create({
                 body: `¡Nuevo turno reservado! De: ${nombre} ${apellido}, el: ${fecha}, a las ${hora}, para: ${newServicio}, su número de teléfono es: ${telefono}.`,
                 from: 'whatsapp:+14155238886',
-                to: 'whatsapp:+5493513410820'
+                to: 'whatsapp:+5493865208851'
             })
             .then(message => console.log(message.sid))
             .catch(error => console.error('Error al enviar el mensaje:', error));
