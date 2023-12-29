@@ -23,8 +23,8 @@ const postClient = async (req, res) => {
 
         if (!(nombre && apellido && telefono && turnos)) {
             return res.status(400).send('Faltan datos');
-        };
-  
+        }
+
         const clientData = {
             nombre,
             apellido,
@@ -33,34 +33,33 @@ const postClient = async (req, res) => {
             fecha,
             servicio
         };
-    
-        const newServicio = servicios[0][0][0]
 
-         client.messages
-        .create({
-            body: `¡Nuevo turno reservado! De: ${nombre} ${apellido}, el: ${fecha}, a las ${hora}, para: ${newServicio}, su número de teléfono es: ${telefono}.`,
-            from: 'whatsapp:+14155238886',
-            to: 'whatsapp:+5493865208851'
-        })
-        .then(message => console.log(message.sid))
-        .catch(error => console.error('Error al enviar el mensaje:', error))
-        .done()
-        
+        const newServicio = servicios[0][0][0];
+
+        // Enviar mensajes a través de Twilio
         client.messages
-        .create({
-            body: `¡Hola ${nombre}, gracias por reservar! Los datos de tu turno son: fecha: ${fecha}, hora: ${hora}, para: ${newServicio}.`,
-            from: 'whatsapp:+14155238886',
-            to: `whatsapp:+5493513410820`
-        })
-        .then(message => console.log(message.sid))
-        .catch(error => console.error('Error al enviar el mensaje:', error))
-        .done()
-        
+            .create({
+                body: `¡Nuevo turno reservado! De: ${nombre} ${apellido}, el: ${fecha}, a las ${hora}, para: ${newServicio}, su número de teléfono es: ${telefono}.`,
+                from: 'whatsapp:+14155238886',
+                to: 'whatsapp:+5493865208851'
+            })
+            .then(message => console.log(message.sid))
+            .catch(error => console.error('Error al enviar el mensaje:', error));
+
+        client.messages
+            .create({
+                body: `¡Hola ${nombre}, gracias por reservar! Los datos de tu turno son: fecha: ${fecha}, hora: ${hora}, para: ${newServicio}.`,
+                from: 'whatsapp:+14155238886',
+                to: `whatsapp:+549${telefono}`
+            })
+            .then(message => console.log(message.sid))
+            .catch(error => console.error('Error al enviar el mensaje:', error));
+
         const newClient = await createClient(clientData);
         res.status(200).json(newClient);
-
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        console.error(error);
+        res.status(500).json({ error: 'Hubo un error en el servidor' });
     }
 };
 
